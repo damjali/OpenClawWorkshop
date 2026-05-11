@@ -97,7 +97,7 @@ You should see version numbers printed.
 Install Open Claw globally:
 
 ```bash
-sudo npm install -g open-claw
+curl -fsSL https://openclaw.ai/install.sh | bash
 ```
 
 Verify installation:
