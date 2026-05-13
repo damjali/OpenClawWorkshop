@@ -1,6 +1,15 @@
-# 🐧 Open Claw WSL Setup Guide (Windows)
+# 🐧 Open Claw + OpenRouter + OnBoard UI Setup Guide (Windows WSL)
 
-This guide will help you install and run Open Claw on Windows using WSL (Windows Subsystem for Linux) with Ubuntu.
+This guide will help you:
+
+- Install WSL Ubuntu
+- Install Open Claw
+- Install Open Claw OnBoard Dashboard UI
+- Connect OpenRouter
+- Use MiniMax models
+- Start chatting with the model from the browser dashboard
+
+Everything below is designed to be copy-paste friendly.
 
 ---
 
@@ -12,17 +21,13 @@ Open PowerShell as Administrator and run:
 wsl --install
 ```
 
-## Optional: Install a Fresh Ubuntu Instance
-
-If you already have WSL installed but want a fresh Ubuntu installation:
+If you already have WSL but want a fresh Ubuntu install:
 
 ```powershell
 wsl --install -d Ubuntu
 ```
 
-## Restart Your Computer
-
-You may be prompted to restart your PC after installation.
+Restart your computer if prompted.
 
 ---
 
@@ -30,29 +35,27 @@ You may be prompted to restart your PC after installation.
 
 After restarting:
 
-1. Open the Start Menu
-2. Search for:
+1. Open Start Menu
+2. Search:
 
 ```text
 Ubuntu
 ```
 
-3. Launch it
+3. Open it
 
-On the first launch, Ubuntu will ask you to:
+Ubuntu will ask for:
 
-- Create a username
-- Create a password
+- Username
+- Password
 
-> Note: Your password will not appear while typing.
-
-Keep the Ubuntu terminal open for the next steps.
+> Password will not show while typing.
 
 ---
 
-# 3. Update Ubuntu Packages
+# 3. Update Ubuntu
 
-Run:
+Copy and paste:
 
 ```bash
 sudo apt update && sudo apt upgrade -y
@@ -60,85 +63,142 @@ sudo apt update && sudo apt upgrade -y
 
 ---
 
-# 4. Install Node.js and NPM
+# 4. Install Required Dependencies
 
-Open Claw requires Node.js.
-
-Run the following commands:
+Copy everything below in ONE GO:
 
 ```bash
-# Install curl if missing
-sudo apt install curl -y
+sudo apt install -y curl git build-essential
 
-# Add NodeSource repository for Node.js 20
 curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
 
-# Install Node.js and NPM
-sudo apt-get install -y nodejs
-```
+sudo apt install -y nodejs
 
----
-
-# 5. Verify Installation
-
-Check that Node.js and NPM are installed correctly:
-
-```bash
 node -v
 npm -v
 ```
 
-You should see version numbers printed.
+You should see version numbers.
+
+---
+
+# 5. Verify Node.js is in PATH
+
+Run:
+
+```bash
+which node
+which npm
+```
+
+Expected output example:
+
+```bash
+/usr/bin/node
+/usr/bin/npm
+```
+
+If nothing appears, restart Ubuntu and try again.
 
 ---
 
 # 6. Install Open Claw
 
-Install Open Claw globally:
+Copy everything:
 
 ```bash
 curl -fsSL https://openclaw.ai/install.sh | bash
-```
 
-Verify installation:
-
-```bash
 open-claw --version
 ```
 
 ---
 
-# 7. Get Your Gemini API Key
+# 7. Install Open Claw OnBoard Dashboard UI
 
-Open:
+Copy everything:
 
-https://aistudio.google.com/app/apikey
+```bash
+npm install -g @openclaw/onboard
+```
 
-Create a new API key and copy it.
+Verify installation:
+
+```bash
+onboard --version
+```
 
 ---
 
-# 8. Create Open Claw Configuration
+# 8. Get Your OpenRouter API Key
 
-Create the config directory:
+Open:
+
+https://openrouter.ai
+
+Then:
+
+1. Sign in
+2. Click your profile icon
+3. Go to:
+   - Keys
+4. Create a new API key
+5. Copy the API key
+
+---
+
+# 9. Find the MiniMax Model Name
+
+Open:
+
+https://openrouter.ai/models
+
+Search for:
+
+```text
+MiniMax
+```
+
+Recommended models:
+
+```text
+minimax/minimax-m1
+```
+
+or
+
+```text
+minimax/minimax-text-01
+```
+
+---
+
+# 10. Create Open Claw Config Folder
+
+Copy everything:
 
 ```bash
 mkdir -p ~/.open-claw
 ```
 
-Open the config file editor:
+---
+
+# 11. Create Configuration File
+
+Open nano editor:
 
 ```bash
 nano ~/.open-claw/config.json
 ```
 
-Paste this configuration:
+Paste EVERYTHING below:
 
 ```json
 {
-  "provider": "google",
-  "model": "gemini-2.0-flash-lite-preview-02-05",
-  "apiKey": "YOUR_GEMINI_API_KEY",
+  "provider": "openrouter",
+  "model": "minimax/minimax-m1",
+  "apiKey": "YOUR_OPENROUTER_API_KEY",
+  "baseURL": "https://openrouter.ai/api/v1",
   "options": {
     "temperature": 0.7,
     "maxTokens": 4096
@@ -149,34 +209,124 @@ Paste this configuration:
 Replace:
 
 ```text
-YOUR_GEMINI_API_KEY
+YOUR_OPENROUTER_API_KEY
 ```
 
-with your actual Gemini API key.
+with your actual API key.
 
 ---
 
-# 9. Save the File
+# 12. Save the File
 
 Inside nano:
 
-- Press `Ctrl + O`
-- Press Enter to save
-- Press `Ctrl + X` to exit
+Save:
+
+```text
+Ctrl + O
+```
+
+Press Enter.
+
+Exit:
+
+```text
+Ctrl + X
+```
 
 ---
 
-# 10. Start Using Open Claw
+# 13. Test Open Claw in Terminal
 
-## Initialize Open Claw in a Project
-
-Navigate to your project folder:
+Run:
 
 ```bash
-cd path/to/project
+open-claw chat
 ```
 
-Then run:
+If successful, you can now chat with the AI in terminal.
+
+Type something like:
+
+```text
+Hello
+```
+
+---
+
+# 14. Start OnBoard Dashboard UI
+
+Run:
+
+```bash
+onboard
+```
+
+You should see something like:
+
+```text
+Server running at http://localhost:3000
+```
+
+---
+
+# 15. Open Dashboard in Browser
+
+Open:
+
+```text
+http://localhost:3000
+```
+
+You should now see the Open Claw dashboard UI.
+
+---
+
+# 16. Connect Open Claw Inside OnBoard
+
+Inside the dashboard:
+
+1. Open Settings
+2. Select:
+   - Provider: OpenRouter
+3. Model:
+   - minimax/minimax-m1
+4. Paste your API key
+5. Save
+
+You can now start chatting directly from the dashboard.
+
+---
+
+# 17. Access Windows Files from Ubuntu
+
+Inside WSL:
+
+```bash
+cd /mnt/c/Users/YOUR_WINDOWS_USERNAME/Desktop
+```
+
+Example:
+
+```bash
+cd /mnt/c/Users/Adam/Desktop
+```
+
+This lets Open Claw access your Windows projects directly.
+
+---
+
+# 18. Create a Project Workspace
+
+Example:
+
+```bash
+mkdir ~/openclaw-projects
+
+cd ~/openclaw-projects
+```
+
+Initialize Open Claw:
 
 ```bash
 open-claw init
@@ -184,33 +334,29 @@ open-claw init
 
 ---
 
-## Start a Chat Session
+# 19. Recommended VS Code Integration
+
+Install:
+
+VS Code:
+
+https://code.visualstudio.com/
+
+WSL Extension:
+
+https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl
+
+Then inside Ubuntu terminal:
 
 ```bash
-open-claw chat
+code .
 ```
+
+This opens the folder directly in VS Code using WSL.
 
 ---
 
-# 11. Access Your Windows Files from Ubuntu
-
-Inside WSL Ubuntu, your Windows drives are located under:
-
-```bash
-/mnt/
-```
-
-Example:
-
-```bash
-cd /mnt/c/Users/YourName/Documents
-```
-
-This allows you to run Open Claw directly on your Windows project files.
-
----
-
-# 12. Useful WSL Commands
+# 20. Useful WSL Commands
 
 ## Shut Down WSL
 
@@ -238,56 +384,117 @@ wsl --update
 
 ---
 
-# 13. Recommended VS Code Integration (Optional)
+# 21. Troubleshooting
 
-Install:
+## "node: command not found"
 
-- VS Code  
-  https://code.visualstudio.com/
+Restart Ubuntu:
 
-- WSL Extension  
-  https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl
+```bash
+exit
+```
 
-This lets you edit WSL files directly inside VS Code.
-
----
-
-# 14. Troubleshooting
-
-## Node Command Not Found
-
-Restart Ubuntu and run:
+Open Ubuntu again and run:
 
 ```bash
 node -v
 ```
 
-again.
-
 ---
 
-## Permission Errors with NPM
+## "open-claw: command not found"
 
-You may need:
-
-```bash
-sudo npm install -g open-claw
-```
-
----
-
-## Open Claw Not Found
-
-Try:
+Run:
 
 ```bash
 npm list -g --depth=0
 ```
 
-to verify installation.
+If missing:
+
+```bash
+curl -fsSL https://openclaw.ai/install.sh | bash
+```
+
+---
+
+## Permission Errors
+
+Run:
+
+```bash
+sudo npm install -g @openclaw/onboard
+```
+
+---
+
+## Port Already in Use
+
+Start OnBoard on another port:
+
+```bash
+onboard --port 4000
+```
+
+Then open:
+
+```text
+http://localhost:4000
+```
+
+---
+
+# 22. Optional: Enable Faster File Performance
+
+Instead of running projects directly from:
+
+```text
+/mnt/c/
+```
+
+store projects inside Linux home:
+
+```bash
+~/projects
+```
+
+This is usually much faster for Node.js applications.
+
+---
+
+# 23. Check Current RAM Usage in WSL
+
+Run:
+
+```bash
+free -h
+```
+
+---
+
+# 24. Completely Shut Down Open Claw + WSL
+
+Close Ubuntu terminal and run in PowerShell:
+
+```powershell
+wsl --shutdown
+```
 
 ---
 
 # ✅ Setup Complete
 
-You can now use Open Claw inside WSL Ubuntu on Windows.
+You now have:
+
+- WSL Ubuntu
+- Node.js
+- Open Claw
+- OnBoard Dashboard UI
+- OpenRouter integration
+- MiniMax model support
+
+You can now interact with AI through:
+
+- Terminal
+- Browser dashboard UI
+- VS Code WSL environment
