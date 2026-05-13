@@ -83,6 +83,16 @@ You should see version numbers.
 
 ---
 
+Now, Install Homebrew
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
+test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bashrc
+
+source ~/.bashrc
+
 # 5. Verify Node.js is in PATH
 
 Run:
@@ -153,15 +163,15 @@ openclaw onboard
 4. "OpenRouter" for Model/auth Provider
 5. Paste your OpenRouter API Key
 6. "Enter Model Manually" for Default Model
-7. Since we will be using OpenRouter's Minimax-2.5 MOdel, paste in "openrouter/minimax/minimax-m2.5" inside "Default Model"
-8. "DuckDuckGo" for Search Provider
-9. "Yes" for Configure Skills Now
-10. Install all missing skills dependencies
-11. "Yes" for HomeBrew install Command
-12. Enable all for Hooks
-13. "Restart" for Gateway Service. If theres no option for Restart, then click on "Reinstall"
-14. Click "Open the Web UI" for "How do you want to hatch your bot?"
-15. Copy the Dashboard Link (With Token) inside the "Dashboard Ready" section and open it inside your browser
+7. Since we will be using OpenRouter's Minimax-2.5 MOdel, paste in "openrouter/deepseek/deepseek-v4-flash" inside "Default Model"
+8. "Skip for now" for Select Channel
+9. "DuckDuckGo" for Search Provider
+10. "Yes" for Configure Skills Now
+11. "No" for Install all missing skills dependencies
+13. "Skip for now" for Hooks
+14. "Restart" for Gateway Service. If theres no option for Restart, then click on "Reinstall"
+15. Click "Open the Web UI" for "How do you want to hatch your bot?"
+16. Copy the Dashboard Link (With Token) inside the "Dashboard Ready" section and open it inside your browser
 
 # ✅ Setup Complete
 
