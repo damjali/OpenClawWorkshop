@@ -22,28 +22,27 @@ Before starting the workshop, participants MUST prepare the following:
 Participants need to prepare a Google OAuth Consent configuration and download the OAuth Secret JSON file.
 
 ### Steps
-
+https://console.cloud.google.com/apis/credentials/consent?project=decisive-plasma-496209-s8
 1. Go to the Google Cloud Console:
    - https://console.cloud.google.com/
+2. search google calendar api in the searchbar and enable Google Calendar API
+4. Open OAuth Consent Screen
+5. Click on get started
+6. enter app information (OpenClaw App etc)
+7. select your email in user support email
+8. select external as audience
+9. enter your email in contact information
+10. Click agree and finish
+11. click on create
+12. click on clients
+13. create a oauth client ID
+14. Set application type as desktop app
+15. set name to (OpenClaw App etc)
+16. download the Client Secret json file and save it for later (important)
+17. Click on Audience Section on the sidebar
+18. add you email inside the test users section, and click on save
 
-2. Create a new project
-
-3. Enable the following API:
-   - **Google Calendar API**
-
-4. Configure OAuth Consent Screen
-   - User Type: External
-   - Fill in required app information
-
-5. Add your email under:
-   - **Test Users**
-
-6. Create OAuth Credentials
-   - Type: Desktop App
-
-7. Download the generated OAuth Secret JSON file
-
-Example filename:
+Example Client Secret JSON filename:
 
 ```bash
 client_secret_xxxxx.json
