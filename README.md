@@ -21,6 +21,7 @@ Open PowerShell as Administrator and run:
 wsl --install
 ```
 
+Once you install WSL, you must REBOOT your computer. Once finish restarting, only then continue.
 If you already have WSL but want a fresh Ubuntu install:
 
 ```powershell
