@@ -157,7 +157,7 @@ Follow these settings carefully.
 
 # 3️⃣ Pair Telegram With OpenClaw
 
-After setup, OpenClaw will generate a:
+After setup, Telegram will generate a:
 
 ```text
 Pairing Code
