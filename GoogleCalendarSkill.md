@@ -52,23 +52,6 @@ Keep this file safe because it will be used during authentication.
 
 ---
 
-# OpenClaw Setup
-
-## 1. Create a New Agent
-
-Inside OpenClaw, create a new agent named:
-
-```text
-Jarvis-Calendar
-```
-
-### Agent Configuration
-
-Use:
-- The SAME model configuration as your main OpenClaw session
-
----
-
 # Enable GOGCLI Skill
 
 ## 1. Install GOGCLI
@@ -81,46 +64,29 @@ openclaw skills install gogcli
 
 ---
 
-## 2. Authenticate GOGCLI
-
-Before using the skill, authenticate first.
+## 2. Check is enabled GOGCLI
 
 Run:
 
 ```bash
-gogcli auth credentials --remote
+openclaw gateway restart
+openclaw onboard
 ```
 
-### During Authentication
-
-You will be asked to:
-
-- Link your downloaded OAuth Secret JSON file
-- Input your Google email address
-
-Example:
-
-```bash
-gogcli auth credentials --remote --secret ./client_secret.json
-```
-
-> IMPORTANT:
-> Always use `--remote` during workshop setup to avoid local authentication callback issues.
-
----
+And then, go to skills section, and make sure the skill "gogcli" is enabled
 
 # Connect Jarvis-Calendar to Google Calendar
 
-After authentication is completed, open your `Jarvis-Calendar` agent and send the following prompt.
+After authentication is completed, open your Open Claw agent (Open the agent that is connected to your telegram if possible) and send the following prompt.
 
 ---
 
 ## Prompt to Send
 
 ```text
-/gog using this skill, Connect with my google calendar api so that you are able to connect with my google calendar and see my calendar schedule and book future meetings. Use the provided Secret key file <make sure to attach the secret key file> and connect with my google calendar. for authentication link methods, make sure to use --remote to avoid any problems of authentication
+<make sure to attach the secret key file(IMPORTANT)> /gog using this skill, Connect with my google calendar api so that you are able to connect with my google calendar and see my calendar schedule and book future meetings. Use the provided Secret key file and connect with my google calendar. for authentication link methods, make sure to use --remote to avoid any problems of authentication
 ```
-
+Continue on doing the steps that OpenClaw Agent ask you to do.
 ---
 
 # Expected Capabilities
