@@ -10,7 +10,7 @@ This guide will help you:
 - Launch the browser dashboard
 - Learn common troubleshooting commands
 
-Everything below is designed for Windows Users Onlny. For MacOS/Linux Users, You can skip the WSL Ubuntu Installation part
+Everything below is designed for Windows Users Only. For MacOS/Linux Users, You can skip the WSL Ubuntu Installation part
 
 ---
 
