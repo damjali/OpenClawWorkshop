@@ -70,7 +70,7 @@ Run:
 
 ```bash
 openclaw gateway restart
-openclaw onboard
+openclaw dashboard
 ```
 
 And then, go to skills section, and make sure the skill "gogcli" is enabled
@@ -84,7 +84,8 @@ After authentication is completed, open your Open Claw agent (Open the agent tha
 ## Prompt to Send
 
 ```text
-<make sure to attach the secret key file(IMPORTANT)> /gog using this skill, Connect with my google calendar api so that you are able to connect with my google calendar and see my calendar schedule and book future meetings. Use the provided Secret key file and connect with my google calendar. for authentication link methods, make sure to use --remote to avoid any problems of authentication
+<MAKE SURE TO ATTACH THE SECRET FILE(IMPORTANT)> 
+/gog using this skill, Connect with my google calendar api so that you are able to connect with my google calendar and see my calendar schedule and book future meetings. Use the provided Secret key file and connect with my google calendar. for authentication link methods, make sure to use --remote to avoid any problems of authentication. Use my google email of <YOUR_GOOGLE_EMAIL>.
 ```
 Continue on doing the steps that OpenClaw Agent ask you to do.
 ---
@@ -119,7 +120,7 @@ Do I have any free time this Friday afternoon?
 ## Create Appointment
 
 ```text
-Book a meeting with John tomorrow at 3 PM for 1 hour
+Schedule me a meeting tomorrow, at 12-2pm, with a title of Group discussion project with <YOUR_FRIEND'S_EMAIL> at Block A The Cube FSKTM
 ```
 
 ## Weekly Schedule
