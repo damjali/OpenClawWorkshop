@@ -78,7 +78,7 @@ BotFather will ask for:
 
 ---
 
-## Step 5 — Enter Bot Name
+## Step 5 — Enter Bot Name, try to have a name related to calendar because that's our usecase for today
 
 Example:
 
@@ -97,7 +97,7 @@ The username:
 - MUST end with:
 
 ```text
-_bot
+<YOURNAME>Calendar_bot
 ```
 
 Example:
@@ -163,7 +163,7 @@ After setup, Telegram will generate a:
 Pairing Code
 ```
 
-Copy the pairing code.
+If no, try to press start upon clicking on your created Telegram Bot. Copy the pairing code.
 
 Then run:
 
