@@ -222,7 +222,8 @@ If configured correctly, OpenClaw should reply.
 To monitor logs or restart services, open the dashboard again:
 
 ```bash
-openclaw onboard
+openclaw gateway restart
+openclaw dashboard
 ```
 
 Then open the Web UI from the dashboard.
